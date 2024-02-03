@@ -22,9 +22,9 @@ public class Sale {
     @Column(name = "id")
     private Long id;
     @Column(name = "delivery_date")
-    private LocalDateTime delivaryDate;
+    private LocalDateTime deliveryDate;
     @Column(name = "adress")
-    private String adress;
+    private String address;
     @Column (name = "shop_id")
     private Long shopId;
     @Column (name = "user_id")

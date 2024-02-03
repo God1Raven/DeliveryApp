@@ -14,7 +14,7 @@ public class Courier {
     @Column(name = "name")
     private String name;
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name  = "id")
@@ -22,6 +22,6 @@ public class Courier {
     @Column(name = "email")
     private String email;
     @Column(name = "phone_number")
-    private String phone_number;
+    private String phoneNumber;
 
 }

@@ -17,13 +17,13 @@ public class OrderProduct {
     @Column(name = "id")
     private Long id;
 
-//    @Column(name = "order_id")
-//    private Long sale_id;
+    @Column(name = "order_id")
+    private Long saleId;
 
     // ???
 //    @OneToOne(targetEntity = Sale.class, mappedBy = "sale_id")
 //    private Sale sale;
 
     @Column(name = "product_id")
-    private Long product_id;
+    private Long productId;
 }

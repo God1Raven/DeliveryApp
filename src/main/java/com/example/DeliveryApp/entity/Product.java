@@ -20,7 +20,7 @@ public class Product {
     @Column(name = "id")
     private Long id;
     @Column(name = "parametrs")
-    private String parametrs;
+    private String parameter;
 
     @ManyToMany
     @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserService {
+public class UserService implements BaseService<UserDto> {
     private UserRepository userRepository;
     private UserMapper userMapper;
 
@@ -18,19 +18,19 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public UserDto createUser(UserDto userDto) {
+    public UserDto create(UserDto userDto) {
         return userMapper.mapEntityToDto(userRepository.save(userMapper.mapDtoToEntity(userDto)));
     }
 
-    public UserDto updateUser(UserDto userDto) {
+    public UserDto update(UserDto userDto) {
         return userMapper.mapEntityToDto(userRepository.save(userMapper.mapDtoToEntity(userDto)));
     }
 
-    public UserDto getUser(Long id) {
+    public UserDto get(Long id) {
         return userRepository.findById(id).map(x -> userMapper.mapEntityToDto(x)).orElse(null);
     }
 
-    public void deleteUser(Long id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
     }
 }
