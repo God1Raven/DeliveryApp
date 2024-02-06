@@ -1,14 +1,14 @@
 package com.example.DeliveryApp.mapper;
 
 import com.example.DeliveryApp.dto.UserDto;
-import com.example.DeliveryApp.entity.User;
+import com.example.DeliveryApp.entity.Client;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    User mapDtoToEntity(UserDto dto);
+    Client mapDtoToEntity(UserDto dto);
 
-    UserDto mapEntityToDto(User user);
+    UserDto mapEntityToDto(Client client);
 
 }

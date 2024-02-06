@@ -11,7 +11,12 @@ import lombok.*;
 public class Admin {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+        name = "admin_id_seq",
+        schema = "public",
+        sequenceName = "admin_id_seq",
+        allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "admin_id_seq")
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
