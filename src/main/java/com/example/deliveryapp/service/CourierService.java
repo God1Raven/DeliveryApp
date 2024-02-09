@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 
 public class CourierService implements BaseService<CourierDto> {
-    private CourierRepository courierRepository;
-    private CourierMapper courierMapper;
+    private final CourierRepository courierRepository;
+    private final CourierMapper courierMapper;
 
     @Autowired
     public CourierService(CourierRepository courierRepository, CourierMapper courierMapper) {

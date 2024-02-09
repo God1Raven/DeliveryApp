@@ -1,9 +1,7 @@
 package com.example.deliveryapp.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Entity
@@ -13,7 +11,12 @@ import lombok.NoArgsConstructor;
 
 public class Client {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "client_id_seq",
+            schema = "public",
+            sequenceName = "client_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
     @Column(name = "name")

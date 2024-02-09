@@ -2,10 +2,12 @@ package com.example.deliveryapp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class UserDto {
+@NoArgsConstructor
+public class ClientDto {
     private Long id;
     private String name;
     private String lastName;

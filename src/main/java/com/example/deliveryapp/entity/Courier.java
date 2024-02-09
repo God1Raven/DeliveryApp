@@ -1,9 +1,9 @@
 package com.example.deliveryapp.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "courier")
@@ -12,7 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Courier {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "courier_id_seq",
+            schema = "public",
+            sequenceName = "courier_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name  = "id")
     private Long id;
     @Column(name = "name")
@@ -24,4 +29,8 @@ public class Courier {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Getter
+    @Setter
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "courier")
+    private List<Sale> sales;
 }

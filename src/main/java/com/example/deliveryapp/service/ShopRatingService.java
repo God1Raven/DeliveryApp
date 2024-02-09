@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 
 public class ShopRatingService implements BaseService<ShopRatingDto>{
-    private ShopRatingRepository shopRatingRepository;
-    private ShopRatingMapper shopRatingMapper;
+    private final ShopRatingRepository shopRatingRepository;
+    private final ShopRatingMapper shopRatingMapper;
 
     @Autowired
     public ShopRatingService(ShopRatingRepository shopRatingRepository, ShopRatingMapper shopRatingMapper) {

@@ -10,9 +10,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "shop")
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Shop {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "shop_id_seq",
+            schema = "public",
+            sequenceName = "shop_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
     @Column(name = "name")

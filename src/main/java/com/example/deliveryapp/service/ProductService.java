@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 
 public class ProductService implements BaseService<ProductDto>{
-    private ProductRepository productRepository;
-    private ProductMapper productMapper;
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     @Autowired
     public ProductService(ProductRepository productRepository, ProductMapper productMapper) {

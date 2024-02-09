@@ -14,27 +14,43 @@ import java.util.List;
 @Table(name = "sale")
 @NoArgsConstructor
 @AllArgsConstructor
-
-
-public class Sale {
+public class Sale implements EntityWithId<Long> {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "sale_id_seq",
+            schema = "public",
+            sequenceName = "sale_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
     @Column(name = "delivery_date")
     private LocalDateTime deliveryDate;
-    @Column(name = "adress")
+    @Column(name = "address")
     private String address;
-    @Column (name = "shop_id")
-    private Long shopId;
-    @Column (name = "user_id")
-    private Long userId;
-    @Column (name = "courier_id")
-    private Long courierId;
     @Column(name = "status")
     private StatusSale status;
 
     @ManyToMany
-    @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable(
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
+    )
     private List<Product> products;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "courier_id", nullable = false)
+    private Courier courier;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "shop_id", nullable = false)
+    private Shop shop;
 }
+
+//TODO прикрутить таблицу с рейтингом магазина, пересмотрев связи  многие ко многим в бд
+

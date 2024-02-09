@@ -1,13 +1,7 @@
 package com.example.deliveryapp.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,16 +10,23 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    @Column(name = "name")
-    private String name;
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "product_id_seq",
+            schema = "public",
+            sequenceName = "product_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "parameter",columnDefinition = "jsonb")
+    private String parameters;
     @Column(name = "parametrs")
     private String parameter;
 

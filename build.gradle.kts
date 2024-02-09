@@ -36,7 +36,6 @@ dependencies {
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
 
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
-
 }
 
 tasks.withType<Test> {

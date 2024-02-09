@@ -18,7 +18,7 @@ public abstract class CrudController<T> {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public T update(T t) {
+    public T update(@RequestBody T t) {
         return baseService.update(t);
     }
 
@@ -27,8 +27,9 @@ public abstract class CrudController<T> {
     public T get(@PathVariable("id") Long id) {
         return baseService.get(id);
     }
-    @RequestMapping(method = RequestMethod.DELETE)
-    public void delete(Long id) {
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") Long id) {
         baseService.delete(id);
     }
 }

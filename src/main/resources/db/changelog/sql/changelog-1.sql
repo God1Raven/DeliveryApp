@@ -65,7 +65,7 @@ create table product
 (
     id         bigint generated always as identity primary key,
     name       varchar(255) not null,
-    parameters jsonb
+    parameter jsonb
 );
 
 alter table product
