@@ -1,7 +1,19 @@
 package com.example.deliveryapp.entity;
 
 import com.example.deliveryapp.dto.StatusSale;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,17 +29,19 @@ import java.util.List;
 public class Sale implements EntityWithId<Long> {
     @Id
     @SequenceGenerator(
-            name = "sale_id_seq",
+            name = "sale_sale_id_seq",
             schema = "public",
-            sequenceName = "sale_id_seq",
+            sequenceName = "sale_sale_id_seq",
             allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sale_sale_id_seq")
     @Column(name = "id")
     private Long id;
     @Column(name = "delivery_date")
     private LocalDateTime deliveryDate;
     @Column(name = "address")
     private String address;
+
+    @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
     @Column(name = "status")
     private StatusSale status;
 

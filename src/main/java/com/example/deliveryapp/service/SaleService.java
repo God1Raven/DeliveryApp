@@ -1,9 +1,17 @@
 package com.example.deliveryapp.service;
 
 import com.example.deliveryapp.dto.SaleDto;
-import com.example.deliveryapp.entity.*;
+import com.example.deliveryapp.entity.Client;
+import com.example.deliveryapp.entity.Courier;
+import com.example.deliveryapp.entity.Product;
+import com.example.deliveryapp.entity.Sale;
+import com.example.deliveryapp.entity.Shop;
 import com.example.deliveryapp.mapper.SaleMapper;
-import com.example.deliveryapp.repository.*;
+import com.example.deliveryapp.repository.ClientRepository;
+import com.example.deliveryapp.repository.CourierRepository;
+import com.example.deliveryapp.repository.ProductRepository;
+import com.example.deliveryapp.repository.SaleRepository;
+import com.example.deliveryapp.repository.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
