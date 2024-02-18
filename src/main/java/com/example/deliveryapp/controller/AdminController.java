@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 
-public class AdminController extends CrudController<AdminDto>{
+public class AdminController extends CrudController<AdminDto, AdminService>{
     @Autowired
     public AdminController(AdminService adminService) {
         this.baseService = adminService;

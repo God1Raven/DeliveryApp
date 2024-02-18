@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/courier")
 
-public class CourierController extends CrudController<CourierDto>{
+public class CourierController extends CrudController<CourierDto, CourierService>{
     @Autowired
     public CourierController(CourierService courierService) {
         this.baseService = courierService;

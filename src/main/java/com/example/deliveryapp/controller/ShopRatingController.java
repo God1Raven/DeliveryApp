@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/shop_rating")
 
-public class ShopRatingController extends CrudController<ShopRatingDto>{
+public class ShopRatingController extends CrudController<ShopRatingDto, ShopRatingService>{
     @Autowired
     public ShopRatingController(ShopRatingService shopRatingService) {
         this.baseService = shopRatingService;

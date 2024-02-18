@@ -1,21 +1,28 @@
 package com.example.deliveryapp.service;
 
+import com.example.deliveryapp.dto.ProductDto;
 import com.example.deliveryapp.dto.SaleDto;
+import com.example.deliveryapp.dto.StatusSale;
 import com.example.deliveryapp.entity.Client;
 import com.example.deliveryapp.entity.Courier;
 import com.example.deliveryapp.entity.Product;
 import com.example.deliveryapp.entity.Sale;
 import com.example.deliveryapp.entity.Shop;
+import com.example.deliveryapp.entity.ShopRating;
+import com.example.deliveryapp.mapper.ProductMapper;
 import com.example.deliveryapp.mapper.SaleMapper;
 import com.example.deliveryapp.repository.ClientRepository;
 import com.example.deliveryapp.repository.CourierRepository;
 import com.example.deliveryapp.repository.ProductRepository;
 import com.example.deliveryapp.repository.SaleRepository;
 import com.example.deliveryapp.repository.ShopRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SaleService implements BaseService<SaleDto> {
@@ -26,18 +33,22 @@ public class SaleService implements BaseService<SaleDto> {
     private final ProductRepository productRepository;
     private final SaleMapper saleMapper;
 
+    private final ProductMapper productMapper;
+
     @Autowired
     public SaleService(SaleRepository saleRepository, CourierRepository courierRepository,
                        ShopRepository shopRepository,
                        ProductRepository productRepository,
                        ClientRepository clientRepository,
-                       SaleMapper saleMapper) {
+                       SaleMapper saleMapper,
+                       ProductMapper productMapper) {
         this.saleRepository = saleRepository;
         this.courierRepository = courierRepository;
         this.shopRepository = shopRepository;
         this.productRepository = productRepository;
         this.clientRepository = clientRepository;
         this.saleMapper = saleMapper;
+        this.productMapper = productMapper;
     }
     public SaleDto create(SaleDto saleDto) {
         Sale sale = saleMapper.mapDtoToEntity(saleDto);
@@ -63,4 +74,22 @@ public class SaleService implements BaseService<SaleDto> {
     public void delete(Long id) {
         saleRepository.deleteById(id);
     }
+    @Override
+    public List<SaleDto> getAll() {
+        return saleRepository.findAll().stream().map(saleMapper::mapEntityToDto).collect(Collectors.toList());
+    }
+    public List<SaleDto> getAllByStatus(StatusSale status){
+        return saleRepository.findAllByStatus(status).stream().map(saleMapper::mapEntityToDto).collect(Collectors.toList());
+    }
+//    public List<Sale> findByDateByRating(StatusSale status, LocalDate startDate, LocalDate endDate, List<Product> products, ShopRating shopRating){
+//        return saleRepository.findByDateSortByRating(status, startDate, endDate, products, shopRating).stream().filter(x ->x.getDeliveryDate().isAfter(startDate) && x.getDeliveryDate().isBefore(endDate)).sorted().collect(Collectors.toList());
+//    }
+    //TODO вывести все продукты доставленные за переданный промежуток времени, отсортированные по среднему рейтингу магазина
+    // Там момент что бы могло в разных магазах продаваться
+    //todo Крч если в разные магазы то отдельно выводишь отдельно их рейтинг
+    //todo Типа итоговое дто типа
+    //-Айди продукта
+    //- название
+    //- магаз 
+    //- рейтинг магаза
 }

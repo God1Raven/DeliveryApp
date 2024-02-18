@@ -8,5 +8,5 @@ import lombok.Data;
 public class ShopRatingDto {
     private Long id;
     private Long shopId;
-    private String rating;
+    private Short rating;
 }

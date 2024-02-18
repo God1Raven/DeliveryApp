@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/product")
-public class ProductController extends CrudController<ProductDto>{
+public class ProductController extends CrudController<ProductDto, ProductService>{
     @Autowired
     public ProductController(ProductService productService) {
         this.baseService = productService;

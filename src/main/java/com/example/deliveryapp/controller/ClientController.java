@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/client")
-public class ClientController extends CrudController<ClientDto> {
+public class ClientController extends CrudController<ClientDto, ClientService> {
 
     @Autowired
     public ClientController(ClientService clientService) {
         this.baseService = clientService;
     }
+
 }
 
 

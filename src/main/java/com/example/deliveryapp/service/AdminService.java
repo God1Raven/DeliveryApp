@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -30,4 +31,10 @@ public class AdminService implements BaseService<AdminDto>{
     public void delete(Long id) {
         adminRepository.deleteById(id);
     }
+
+    @Override
+    public List<AdminDto> getAll() {
+        return adminRepository.findAll().stream().map(adminMapper::mapEntityToDto).collect(Collectors.toList());
+    }
+
 }

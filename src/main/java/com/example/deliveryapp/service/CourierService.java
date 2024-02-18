@@ -6,6 +6,9 @@ import com.example.deliveryapp.repository.CourierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 
 public class CourierService implements BaseService<CourierDto> {
@@ -32,5 +35,10 @@ public class CourierService implements BaseService<CourierDto> {
 
     public void delete(Long id) {
         courierRepository.deleteById(id);
+    }
+
+    @Override
+    public List<CourierDto> getAll() {
+        return courierRepository.findAll().stream().map(courierMapper::mapEntityToDto).collect(Collectors.toList());
     }
 }

@@ -30,5 +30,5 @@ public class ShopRating {
     @Column(name = "shop_id")
     private Long shopId;
     @Column(name = "rating")
-    private String rating;
+    private Short rating;
 }
