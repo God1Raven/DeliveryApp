@@ -13,10 +13,5 @@ import java.util.List;
 public interface SaleRepository extends JpaRepository<Sale, Long> {
     List<Sale> findAllByStatus(StatusSale status);
 
-//    @Query(value = "FROM Sale sale WHERE sale.status = ?1 AND sale.rating = ?2")
-//    List<Sale> findByDateSortByRating(StatusSale status, LocalDate startDate, LocalDate endDate, List<Product> products, ShopRating shopRating);
 
-//    @Modifying
-//    @Query(value = "INSERT", )
-//    void updateSjasjhdj();
 }

@@ -1,6 +1,8 @@
 package com.example.deliveryapp.mapper;
 
+import com.example.deliveryapp.dto.FindByDateSortByRatingDto;
 import com.example.deliveryapp.dto.ProductDto;
+import com.example.deliveryapp.entity.FindByDateSortByRating;
 import com.example.deliveryapp.entity.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -12,12 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class ProductMapper {
 
-    @Autowired
+//    @Autowired
     private ObjectMapper mapper;
 
     public abstract Product mapDtoToEntity(ProductDto productDto);
 
     public abstract ProductDto mapEntityToDto(Product product);
+
+    //public abstract FindByDateSortByRating mapCustomDtoToCustomEntity(FindByDateSortByRatingDto findByDateSortByRating);
+    public abstract FindByDateSortByRatingDto mapCustomEntityToCustomDto(FindByDateSortByRating findByDateSortByRatingDto);
 
     protected String mapJsonToString(JsonNode json) {
         try {
