@@ -4,7 +4,9 @@ import com.example.deliveryapp.entity.FindByDateSortByRating;
 import com.example.deliveryapp.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
                 ) rate 
                 on shop.id = rate.shop_id) shopRate on sale.shop_id = shopRate.id where sale.delivery_date between ?1 and ?2) t on order_product.order_id = t.id) t
                on product.id = t.product_id order by t.shop_rating desc;""", nativeQuery = true)
-       List<FindByDateSortByRating> findByDateSortByRating(LocalDateTime after, LocalDateTime before);
+       List<FindByDateSortByRating> findByDateSortByRating(LocalDate after, LocalDate before);
 
 //    @Modifying
 //    @Query(value = "INSERT", )

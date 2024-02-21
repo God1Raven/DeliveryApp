@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class ProductMapper {
 
-//    @Autowired
     private ObjectMapper mapper;
 
     public abstract Product mapDtoToEntity(ProductDto productDto);
@@ -40,5 +39,10 @@ public abstract class ProductMapper {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Autowired
+    public void setMapper(ObjectMapper mapper) {
+        this.mapper = mapper;
     }
 }

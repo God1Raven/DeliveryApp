@@ -7,6 +7,7 @@ import com.example.deliveryapp.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,7 +43,7 @@ public class ProductService implements BaseService<ProductDto>{
     public List<ProductDto> getAll() {
         return productRepository.findAll().stream().map(productMapper::mapEntityToDto).collect(Collectors.toList());
     }
-    public List<FindByDateSortByRatingDto> findByDateSortByRatingDto(LocalDateTime after, LocalDateTime before){
+    public List<FindByDateSortByRatingDto> findByDateSortByRatingDto(LocalDate after, LocalDate before){
         return productRepository.findByDateSortByRating(after, before).stream().map(productMapper::mapCustomEntityToCustomDto).collect(Collectors.toList());
     }
 }
