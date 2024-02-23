@@ -1,5 +1,7 @@
 package com.example.deliveryapp.service;
 
+import com.example.deliveryapp.dto.FindCourierByProductDto;
+import com.example.deliveryapp.dto.FindSaleByAddressByAvgRatingDto;
 import com.example.deliveryapp.dto.ProductDto;
 import com.example.deliveryapp.dto.SaleDto;
 import com.example.deliveryapp.dto.StatusSale;
@@ -81,15 +83,7 @@ public class SaleService implements BaseService<SaleDto> {
     public List<SaleDto> getAllByStatus(StatusSale status){
         return saleRepository.findAllByStatus(status).stream().map(saleMapper::mapEntityToDto).collect(Collectors.toList());
     }
-//    public List<Sale> findByDateByRating(StatusSale status, LocalDate startDate, LocalDate endDate, List<Product> products, ShopRating shopRating){
-//        return saleRepository.findByDateSortByRating(status, startDate, endDate, products, shopRating).stream().filter(x ->x.getDeliveryDate().isAfter(startDate) && x.getDeliveryDate().isBefore(endDate)).sorted().collect(Collectors.toList());
-//    }
-    //TODO вывести все продукты доставленные за переданный промежуток времени, отсортированные по среднему рейтингу магазина
-    // Там момент что бы могло в разных магазах продаваться
-    //todo Крч если в разные магазы то отдельно выводишь отдельно их рейтинг
-    //todo Типа итоговое дто типа
-    //-Айди продукта
-    //- название
-    //- магаз 
-    //- рейтинг магаза
+    public List<FindSaleByAddressByAvgRatingDto> findSaleByAddressByAvgRatingDto(String address, Short shopRating){
+        return saleRepository.findSaleByAddressByAvgRating(address, shopRating.doubleValue()).stream().map(saleMapper::mapCustomEntityToCustomDto).collect(Collectors.toList());
+    }
 }

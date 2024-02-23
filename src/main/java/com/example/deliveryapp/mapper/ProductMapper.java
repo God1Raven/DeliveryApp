@@ -20,8 +20,7 @@ public abstract class ProductMapper {
 
     public abstract ProductDto mapEntityToDto(Product product);
 
-    //public abstract FindByDateSortByRating mapCustomDtoToCustomEntity(FindByDateSortByRatingDto findByDateSortByRating);
-    public abstract FindByDateSortByRatingDto mapCustomEntityToCustomDto(FindByDateSortByRating findByDateSortByRatingDto);
+    public abstract FindByDateSortByRatingDto mapCustomEntityToCustomDto(FindByDateSortByRating findByDateSortByRating);
 
     protected String mapJsonToString(JsonNode json) {
         try {

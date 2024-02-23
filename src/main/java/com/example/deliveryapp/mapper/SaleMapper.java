@@ -1,8 +1,10 @@
 package com.example.deliveryapp.mapper;
 
+import com.example.deliveryapp.dto.FindSaleByAddressByAvgRatingDto;
 import com.example.deliveryapp.dto.SaleDto;
 import com.example.deliveryapp.entity.Client;
 import com.example.deliveryapp.entity.Courier;
+import com.example.deliveryapp.entity.FindSaleByAddressByAvgRating;
 import com.example.deliveryapp.entity.Product;
 import com.example.deliveryapp.entity.Sale;
 import com.example.deliveryapp.entity.Shop;
@@ -42,4 +44,6 @@ public interface SaleMapper {
     default Long mapToId(Product product) {
         return product != null ? product.getId() : null;
     }
+
+    FindSaleByAddressByAvgRatingDto mapCustomEntityToCustomDto(FindSaleByAddressByAvgRating findSaleByAddressByAvgRating);
 }
