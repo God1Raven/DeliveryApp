@@ -1,0 +1,40 @@
+{
+  "public.sale":[
+    {
+      "id": 1,
+      "delivery_date": "2023-05-20 00:00:00",
+      "address": "Kolotilova, d.38, kv.27",
+      "client_id": 1,
+      "shop_id": 1,
+      "courier_id": 1,
+      "status": "DELIVERED"
+    },
+    {
+      "id": 2,
+      "delivery_date": "2023-11-12 00:00:00",
+      "address": "Koptilova, d.25, kv.50",
+      "client_id": 2,
+      "shop_id": 2,
+      "courier_id": 2,
+      "status": "IN_TRANSIT"
+    },
+    {
+    "id": 3,
+      "delivery_date": "2023-07-26 00:00:00",
+      "address": "Mayakovskogo, d.38, kv.27",
+      "client_id": 2,
+      "shop_id": 2,
+      "courier_id": 2,
+      "status": "DELIVERED"
+    },
+    {
+      "id": 4,
+      "delivery_date": "2024-01-22 00:00:00",
+      "address": "Kostrova, d.38, kv.27",
+      "client_id": 4,
+      "shop_id": 4,
+      "courier_id": 4,
+      "status": "IN_TRANSIT"
+    }
+    ]
+}

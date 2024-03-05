@@ -1,0 +1,20 @@
+{
+  "public.product": [
+    {
+      "id": 1,
+      "name": "Pivo"
+    },
+    {
+      "id": 2,
+      "name": "Sir"
+    },
+    {
+      "id": 3,
+      "name": "Ice cream"
+    },
+    {
+      "id": 4,
+      "name": "Water"
+    }
+  ]
+}

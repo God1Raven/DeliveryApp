@@ -1,0 +1,33 @@
+{
+  "public.courier":[
+    {
+      "id": 1,
+      "name": "Геннадий",
+      "productName": "Pivo",
+      "shopName": "Veselki",
+      "shopRating": 3
+    },
+    {
+      "id": 2,
+      "name": "Геннадий",
+      "productName": "Sir",
+      "shopName": "BubbleIce",
+      "shopRating": 4
+    },
+    {
+      "id": 3,
+      "name": "Геннадий",
+      "productName": "Ice cream",
+      "shopName": "Pyaterochka",
+      "shopRating": 3
+    },
+    {
+
+      "id": 4,
+      "name": "Геннадий",
+      "productName": "Water",
+      "shopName": "Prototype",
+      "shopRating": 5
+    }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+  "public.courier": [
+    {
+      "id": 1,
+      "name": "Геннадий",
+      "last_name": "Воронцов",
+      "email": "Voroncov@gmail.com",
+      "phone_number": "+79857841245"
+    },
+    {
+      "id": 2,
+      "name": "Геннадий",
+      "last_name": "Воронцов",
+      "email": "Voroncov@gmail.com",
+      "phone_number": "+79857841245"
+    },
+    {
+      "id": 3,
+      "name": "Геннадий",
+      "last_name": "Воронцов",
+      "email": "Voroncov@gmail.com",
+      "phone_number": "+79857841245"
+    },
+    {
+      "id": 4,
+      "name": "Геннадий",
+      "last_name": "Воронцов",
+      "email": "Voroncov@gmail.com",
+      "phone_number": "+79857841245"
+    }
+  ]
+}
