@@ -10,21 +10,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.io.IOException;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc(printOnlyOnFailure = false)
-@DataSet(value = {"data_sets/PRODUCT.json", "data_sets/ORDER_PRODUCT.json", "data_sets/SHOP.json", "data_sets/SHOP_RATING.json",
-        "data_sets/SALE.json", "data_sets/CLIENT.json", "data_sets/COURIER.json"})
-@ExpectedDataSet(value = {"data_sets/PRODUCT.json", "data_sets/ORDER_PRODUCT.json", "data_sets/SHOP.json", "data_sets/SHOP_RATING.json",
-        "data_sets/SALE.json", "data_sets/CLIENT.json", "data_sets/COURIER.json"})
+@DataSet(value = {"data_sets/DATA_SET.json"})
+@ExpectedDataSet(value = {"data_sets/DATA_SET.json"})
 public class CourierControllerTest extends DatabaseTest {
 
     private final int port;

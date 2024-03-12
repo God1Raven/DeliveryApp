@@ -1,10 +1,13 @@
 package com.example.deliveryapp.service;
 
-import com.example.deliveryapp.dto.AdminDto;
 import com.example.deliveryapp.dto.ClientDto;
+import com.example.deliveryapp.entity.Client;
 import com.example.deliveryapp.mapper.ClientMapper;
 import com.example.deliveryapp.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +25,8 @@ public class ClientService implements BaseService<ClientDto> {
         this.clientMapper = clientMapper;
     }
 
+
+
     public ClientDto create(ClientDto clientDto) {
         return clientMapper.mapEntityToDto(clientRepository.save(clientMapper.mapDtoToEntity(clientDto)));
     }
@@ -37,6 +42,7 @@ public class ClientService implements BaseService<ClientDto> {
     public void delete(Long id) {
         clientRepository.deleteById(id);
     }
+
     @Override
     public List<ClientDto> getAll() {
         return clientRepository.findAll().stream().map(clientMapper::mapEntityToDto).collect(Collectors.toList());

@@ -3,7 +3,7 @@ plugins {
 	id("org.springframework.boot") version "3.2.2"
 	id("io.spring.dependency-management") version "1.1.4"
 	id("io.swagger.core.v3.swagger-gradle-plugin") version "2.2.20"
-	//id ("checkstyle")
+	id ("checkstyle")
 }
 
 group = "com.example"
@@ -29,16 +29,26 @@ dependencies {
 	implementation("org.liquibase:liquibase-core")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	implementation ("org.springframework.boot:spring-boot-starter-security")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
 	implementation("org.mapstruct:mapstruct:1.5.5.Final")
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
+	implementation("org.springframework.boot:spring-boot-starter-tomcat:1.2.1.RELEASE")
 
 	implementation("com.github.database-rider:rider-core:1.41.1")
 	implementation("com.github.database-rider:rider-spring:1.41.1")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 	implementation("org.springframework.boot:spring-boot-starter-webflux:3.2.3")
-			//implementation("io.hypersistence:hypersistence-utils-hibernate-55:3.7.3")
+	implementation("com.nimbusds:nimbus-jose-jwt:9.37")
+	implementation("io.jsonwebtoken:jjwt-api:0.12.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.5")
+	implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
+
+
+
+//	implementation("io.hypersistence:hypersistence-utils-hibernate-55:3.7.3")
 
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -30,7 +30,7 @@ public class Courier {
             sequenceName = "courier_id_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "courier_id_seq")
-    @Column(name  = "id")
+    @Column(name = "id")
     private Long id;
     @Column(name = "name")
     private String name;
@@ -41,8 +41,10 @@ public class Courier {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+
     @Getter
     @Setter
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courier")
     private List<Sale> sales;
+
 }

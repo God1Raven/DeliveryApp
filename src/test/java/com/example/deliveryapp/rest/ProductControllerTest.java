@@ -18,10 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc(printOnlyOnFailure = false)
-@DataSet(value = {"data_sets/PRODUCT.json", "data_sets/ORDER_PRODUCT.json", "data_sets/SHOP.json", "data_sets/SHOP_RATING.json",
-        "data_sets/SALE.json", "data_sets/CLIENT.json", "data_sets/COURIER.json"})
-@ExpectedDataSet(value = {"data_sets/PRODUCT.json", "data_sets/ORDER_PRODUCT.json", "data_sets/SHOP.json", "data_sets/SHOP_RATING.json",
-        "data_sets/SALE.json", "data_sets/CLIENT.json", "data_sets/COURIER.json"})
+@DataSet(value = {"data_sets/DATA_SET.json"})
+@ExpectedDataSet(value = {"data_sets/DATA_SET.json"})
 public class ProductControllerTest extends DatabaseTest {
     private final int port;
 

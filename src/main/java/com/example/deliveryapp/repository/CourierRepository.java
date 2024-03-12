@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CourierRepository extends JpaRepository<Courier, Long> {
-
     @Query(value = """
                       SELECT t.courier_id as id, t.cid as name, product.name as productName, t.shop_name as shopName, t.shop_rating as shopRating FROM product JOIN 
                       (SELECT t.product_id, t.shop_name, t.shop_rating, t.courier_id, courier.name AS cid  FROM courier JOIN 

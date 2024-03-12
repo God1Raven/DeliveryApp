@@ -6,7 +6,9 @@ import com.example.deliveryapp.dto.FindCourierByProductDto;
 import com.example.deliveryapp.dto.request.FindCourierByProductRequest;
 import com.example.deliveryapp.dto.request.FindProductsByDateRequest;
 import com.example.deliveryapp.service.CourierService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +18,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/courier")
-
+@SecurityRequirement(name = "bearerAuth")
+@PreAuthorize("hasRole('CLIENT')")
 public class CourierController extends CrudController<CourierDto, CourierService>{
     @Autowired
     public CourierController(CourierService courierService) {
