@@ -41,6 +41,9 @@ public class Courier {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    public Courier(Long id) {
+        this.id = id;
+    }
 
     @Getter
     @Setter

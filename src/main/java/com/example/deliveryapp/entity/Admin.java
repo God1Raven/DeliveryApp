@@ -18,6 +18,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Admin {
 
+    public Admin(Long id) {
+        this.id = id;
+    }
+
     @Id
     @SequenceGenerator(
         name = "admin_id_seq",

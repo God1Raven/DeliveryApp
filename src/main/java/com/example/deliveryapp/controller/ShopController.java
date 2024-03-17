@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/shop")
 @SecurityRequirement(name = "bearerAuth")
+@PreAuthorize("hasRole('CLIENT')")
 public class ShopController extends CrudController<ShopDto, ShopService>{
     @Autowired
     public ShopController(ShopService shopService) {

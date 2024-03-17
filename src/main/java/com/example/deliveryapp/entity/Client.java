@@ -16,7 +16,15 @@ import java.util.List;
 @Table(name = "client")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Client{
+public class Client {
+
+    public Long getId() {
+        return id;
+    }
+    public Client(Long id){
+        this.id = id;
+    }
+
     @Id
     @SequenceGenerator(
             name = "client_client_id_seq",

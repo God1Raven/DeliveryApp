@@ -49,6 +49,16 @@ public class Sale implements EntityWithId<Long> {
     @Column(name = "status")
     private StatusSale status;
 
+    public Sale(Long id, List<Product> products,StatusSale status, Client client, Shop shop, Courier courier) {
+        this.id = id;
+        this.products = products;
+        this.shop = shop;
+        this.courier = courier;
+        this.client = client;
+        this.status = status;
+    }
+
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "order_product",

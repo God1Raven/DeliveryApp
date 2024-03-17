@@ -16,6 +16,7 @@ public class AdminService implements BaseService<AdminDto>{
     private final AdminRepository adminRepository;
     private final AdminMapper adminMapper;
 
+
     public AdminDto create(AdminDto adminDto) {
         return adminMapper.mapEntityToDto(adminRepository.save(adminMapper.mapDtoToEntity(adminDto)));
     }

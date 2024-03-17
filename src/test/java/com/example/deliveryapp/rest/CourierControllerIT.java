@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -17,29 +18,30 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMockMvc(printOnlyOnFailure = false) // Обязательная аннотация
+@AutoConfigureMockMvc(printOnlyOnFailure = false)
 @DataSet(value = {"data_sets/DATA_SET.json"})
 @ExpectedDataSet(value = {"data_sets/DATA_SET.json"})
-public class SaleControllerTest extends DatabaseTest {
+@WithMockUser(username="admin",roles={"CLIENT","ADMIN"})
+public class CourierControllerIT extends DatabaseTest {
+
     private final int port;
     @Autowired
     MockMvc mockMvc;
 
 
-    public SaleControllerTest(@Value("${server.port}") int port) {
-        this.port = port;
-    }
+    public CourierControllerIT(@Value("${server.port}")int port) {this.port = port;}
+
     @Test
-    public void findSaleByAddressTest() throws Exception {
-        final String request = getContentFromFile("/Request/SaleRequest.json");
-        final String response = getContentFromFile("/Response/SaleResponse.json");
+    public void findCourierByProductTest() throws Exception {
+        final String request = getContentFromFile("/Request/CourierRequest.json"); //Сделать метод где просто подаешь
+        final String response = getContentFromFile("/Response/CourierResponse.json");
 
         Assertions.assertNotNull(request, "Not found resource for request");
         Assertions.assertNotNull(response, "Not found resource for response");
 
 
         final var requestBuilder = MockMvcRequestBuilders
-                .post("/sale/findSaleByAddress")
+                .post("/courier/findCourierByProduct")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(request);
 
@@ -50,7 +52,5 @@ public class SaleControllerTest extends DatabaseTest {
                         status().isOk(),
                         content().json(response)
                 );
-        //TODO сделать метод, в который сразу подаешь респонс и реквест, что бы уменьшить код
-        //Assertions.assertNotNull(client, "{\"id\": \"52\", \"address\": \"Kiseleva\", \"d.25\", \"kv.48\", \"shopId\": \"240\", \"shopName\": \"Магазин_42\"}");
     }
 }

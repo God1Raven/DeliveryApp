@@ -1,15 +1,15 @@
 package com.example.deliveryapp.service;
 
-import com.example.deliveryapp.DatabaseTest;
+import com.example.deliveryapp.BaseTest;
 import com.example.deliveryapp.dto.AdminDto;
-import com.example.deliveryapp.dto.ProductDto;
+import com.example.deliveryapp.dto.CourierDto;
 import com.example.deliveryapp.dto.ShopDto;
 import com.example.deliveryapp.entity.Admin;
-import com.example.deliveryapp.entity.Product;
+import com.example.deliveryapp.entity.Courier;
 import com.example.deliveryapp.mapper.AdminMapper;
-import com.example.deliveryapp.mapper.ProductMapper;
+import com.example.deliveryapp.mapper.CourierMapper;
 import com.example.deliveryapp.repository.AdminRepository;
-import com.example.deliveryapp.repository.ProductRepository;
+import com.example.deliveryapp.repository.CourierRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
+import static com.example.deliveryapp.BaseTest.getContentFromFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -31,38 +32,40 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
-public class ProductServiceTest extends DatabaseTest {
-
+public class CourierServiceTest extends BaseTest {
     @Autowired
-    private ProductService productService;
+    MockMvc mockMvc;
+    @Autowired
+    private CourierService courierService;
     @MockBean
-    private ProductRepository productRepository;
+    private CourierRepository courierRepository;
     @Autowired
-    private ProductMapper productMapper;
-    private Product productEntity = new Product(1L, List.of(), "{\"width\": 500}");
-    private ProductDto productDto;
+    private CourierMapper courierMapper;
+    private Courier courierEntity = new Courier(1L);
+    private CourierDto courierDto;
     @Autowired
-    public ProductServiceTest(ProductMapper productMapper){
-        productDto = productMapper.mapEntityToDto(productEntity);
+    public CourierServiceTest(CourierMapper courierMapper){
+        courierDto = courierMapper.mapEntityToDto(courierEntity);
     }
+    
     @Test
-    void createProductTest() {
-        Mockito.doReturn(productEntity).when(productRepository).save(any(Product.class));
-        Assertions.assertEquals(productDto, productService.create(productDto));
+    void createCourierTest() {
+        Mockito.doReturn(courierEntity).when(courierRepository).save(any(Courier.class));
+        Assertions.assertEquals(courierDto, courierService.create(courierDto));
     }
 
     @Test
-    void deleteProductTest() {
+    void deleteCourierTest() {
         long entityId = 1L;
-        productService.delete(entityId);
-        Mockito.verify(productRepository).deleteById(entityId);
+        courierService.delete(entityId);
+        Mockito.verify(courierRepository).deleteById(entityId);
     }
     @Test
-    void getAllProductTest(){
-        Mockito.doReturn(List.of(productEntity)).when(productRepository).findAll();
-        List<ProductDto> actual = productService.getAll();
-        Mockito.verify(productRepository).findAll();
+    void getAllCourierTest(){
+        Mockito.doReturn(List.of(courierEntity)).when(courierRepository).findAll();
+        List<CourierDto> actual = courierService.getAll();
+        Mockito.verify(courierRepository).findAll();
         assertEquals(1, actual.size());
-        assertEquals(productDto, actual.get(0));
+        assertEquals(courierDto, actual.get(0));
     }
 }

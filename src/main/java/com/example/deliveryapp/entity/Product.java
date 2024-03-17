@@ -41,6 +41,11 @@ public class Product {
     @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
     private List<Sale> sales;
 
+    public Product(Long id, List<Sale> sales, String parameters) {
+        this.id = id;
+        this.sales = sales;
+        this.parameters = parameters;
+    }
 
     @Getter
     @AllArgsConstructor
