@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 @PreAuthorize("hasRole('CLIENT')")
-public class AdminController extends CrudController<AdminDto, AdminService>{
+public class AdminController extends CrudController<AdminDto, AdminService> {
+
     @Autowired
     public AdminController(AdminService adminService) {
         this.baseService = adminService;
     }
+
 }

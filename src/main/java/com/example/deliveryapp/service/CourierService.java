@@ -1,16 +1,13 @@
 package com.example.deliveryapp.service;
 
 import com.example.deliveryapp.dto.CourierDto;
-import com.example.deliveryapp.dto.FindByDateSortByRatingDto;
 import com.example.deliveryapp.dto.FindCourierByProductDto;
 import com.example.deliveryapp.mapper.CourierMapper;
 import com.example.deliveryapp.repository.CourierRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 
@@ -44,7 +41,9 @@ public class CourierService implements BaseService<CourierDto> {
     public List<CourierDto> getAll() {
         return courierRepository.findAll().stream().map(courierMapper::mapEntityToDto).collect(Collectors.toList());
     }
-    public List<FindCourierByProductDto> findCourierByProductDto(String productName, Short shopRating){
-        return courierRepository.findCouriersByProduct(productName, shopRating.doubleValue()).stream().map(courierMapper::mapCustomEntityToCustomDto).collect(Collectors.toList());
+
+    public List<FindCourierByProductDto> findCourierByProductDto(String productName, Short shopRating) {
+        return courierRepository.findCouriersByProduct(productName, shopRating.doubleValue()).stream()
+                .map(courierMapper::mapCustomEntityToCustomDto).collect(Collectors.toList());
     }
 }

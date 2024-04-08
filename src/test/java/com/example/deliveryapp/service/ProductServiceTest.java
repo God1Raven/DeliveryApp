@@ -1,15 +1,14 @@
 package com.example.deliveryapp.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+
 import com.example.deliveryapp.DatabaseTest;
-import com.example.deliveryapp.dto.AdminDto;
 import com.example.deliveryapp.dto.ProductDto;
-import com.example.deliveryapp.dto.ShopDto;
-import com.example.deliveryapp.entity.Admin;
 import com.example.deliveryapp.entity.Product;
-import com.example.deliveryapp.mapper.AdminMapper;
 import com.example.deliveryapp.mapper.ProductMapper;
-import com.example.deliveryapp.repository.AdminRepository;
 import com.example.deliveryapp.repository.ProductRepository;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,16 +17,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
@@ -42,7 +31,7 @@ public class ProductServiceTest extends DatabaseTest {
     private Product productEntity = new Product(1L, List.of(), "{\"width\": 500}");
     private ProductDto productDto;
     @Autowired
-    public ProductServiceTest(ProductMapper productMapper){
+    public ProductServiceTest(ProductMapper productMapper) {
         productDto = productMapper.mapEntityToDto(productEntity);
     }
     @Test
@@ -58,7 +47,7 @@ public class ProductServiceTest extends DatabaseTest {
         Mockito.verify(productRepository).deleteById(entityId);
     }
     @Test
-    void getAllProductTest(){
+    void getAllProductTest() {
         Mockito.doReturn(List.of(productEntity)).when(productRepository).findAll();
         List<ProductDto> actual = productService.getAll();
         Mockito.verify(productRepository).findAll();

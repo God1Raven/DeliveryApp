@@ -1,6 +1,5 @@
 package com.example.deliveryapp.dto.request;
 
-
 import lombok.Data;
 
 @Data

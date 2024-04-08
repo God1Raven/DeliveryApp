@@ -9,13 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Entity
 @Table(name = "courier")
@@ -24,11 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Courier {
     @Id
-    @SequenceGenerator(
-            name = "courier_id_seq",
-            schema = "public",
-            sequenceName = "courier_id_seq",
-            allocationSize = 1)
+    @SequenceGenerator(name = "courier_id_seq", schema = "public", sequenceName = "courier_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "courier_id_seq")
     @Column(name = "id")
     private Long id;

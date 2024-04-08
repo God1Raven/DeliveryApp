@@ -23,18 +23,14 @@ public class AuthenticationService {
     /**
      * Регистрация пользователя
      *
-     * @param request данные пользователя
+     * @param request
+     *            данные пользователя
      * @return токен
      */
     public JwtAuthenticationResponse signUp(SignUpRequest request) {
 
-        var user = new User(
-                null,
-                request.getUsername(),
-                passwordEncoder.encode(request.getPassword()),
-                request.getEmail(),
-                Role.CLIENT
-        );
+        var user = new User(null, request.getUsername(), passwordEncoder.encode(request.getPassword()),
+                request.getEmail(), Role.CLIENT);
 
         userService.create(user);
 
@@ -45,22 +41,17 @@ public class AuthenticationService {
     /**
      * Аутентификация пользователя
      *
-     * @param request данные пользователя
+     * @param request
+     *            данные пользователя
      * @return токен
      */
     public JwtAuthenticationResponse signIn(SignInRequest request) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                request.getUsername(),
-                request.getPassword()
-        ));
+        authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-        var user = userService
-                .userDetailsService()
-                .loadUserByUsername(request.getUsername());
+        var user = userService.userDetailsService().loadUserByUsername(request.getUsername());
 
         var jwt = jwtService.generateToken(user);
         return new JwtAuthenticationResponse(jwt);
     }
 }
-
-

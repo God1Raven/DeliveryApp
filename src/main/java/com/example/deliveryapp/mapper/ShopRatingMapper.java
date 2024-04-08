@@ -7,5 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface ShopRatingMapper {
     ShopRating mapDtoToEntity(ShopRatingDto shopRatingDto);
-    ShopRatingDto mapEntityToDto (ShopRating shopRating);
+
+    ShopRatingDto mapEntityToDto(ShopRating shopRating);
 }

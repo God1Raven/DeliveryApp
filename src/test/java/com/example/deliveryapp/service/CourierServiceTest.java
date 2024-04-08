@@ -1,15 +1,14 @@
 package com.example.deliveryapp.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+
 import com.example.deliveryapp.BaseTest;
-import com.example.deliveryapp.dto.AdminDto;
 import com.example.deliveryapp.dto.CourierDto;
-import com.example.deliveryapp.dto.ShopDto;
-import com.example.deliveryapp.entity.Admin;
 import com.example.deliveryapp.entity.Courier;
-import com.example.deliveryapp.mapper.AdminMapper;
 import com.example.deliveryapp.mapper.CourierMapper;
-import com.example.deliveryapp.repository.AdminRepository;
 import com.example.deliveryapp.repository.CourierRepository;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,17 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.List;
-
-import static com.example.deliveryapp.BaseTest.getContentFromFile;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
@@ -44,10 +33,10 @@ public class CourierServiceTest extends BaseTest {
     private Courier courierEntity = new Courier(1L);
     private CourierDto courierDto;
     @Autowired
-    public CourierServiceTest(CourierMapper courierMapper){
+    public CourierServiceTest(CourierMapper courierMapper) {
         courierDto = courierMapper.mapEntityToDto(courierEntity);
     }
-    
+
     @Test
     void createCourierTest() {
         Mockito.doReturn(courierEntity).when(courierRepository).save(any(Courier.class));
@@ -61,7 +50,7 @@ public class CourierServiceTest extends BaseTest {
         Mockito.verify(courierRepository).deleteById(entityId);
     }
     @Test
-    void getAllCourierTest(){
+    void getAllCourierTest() {
         Mockito.doReturn(List.of(courierEntity)).when(courierRepository).findAll();
         List<CourierDto> actual = courierService.getAll();
         Mockito.verify(courierRepository).findAll();

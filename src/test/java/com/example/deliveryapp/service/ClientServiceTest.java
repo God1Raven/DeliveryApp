@@ -1,11 +1,14 @@
 package com.example.deliveryapp.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+
 import com.example.deliveryapp.BaseTest;
 import com.example.deliveryapp.dto.ClientDto;
-import com.example.deliveryapp.dto.ShopDto;
 import com.example.deliveryapp.entity.Client;
 import com.example.deliveryapp.mapper.ClientMapper;
 import com.example.deliveryapp.repository.ClientRepository;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,12 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
@@ -36,7 +33,7 @@ class ClientServiceTest extends BaseTest {
     private Client clientEntity = new Client(1L);
     private ClientDto clientDto;
     @Autowired
-    public ClientServiceTest(ClientMapper clientMapper){
+    public ClientServiceTest(ClientMapper clientMapper) {
         clientDto = clientMapper.mapEntityToDto(clientEntity);
     }
 
@@ -53,7 +50,7 @@ class ClientServiceTest extends BaseTest {
         Mockito.verify(clientRepository).deleteById(entityId);
     }
     @Test
-    void getAllClientTest(){
+    void getAllClientTest() {
         Mockito.doReturn(List.of(clientEntity)).when(clientRepository).findAll();
         List<ClientDto> actual = clientService.getAll();
         Mockito.verify(clientRepository).findAll();

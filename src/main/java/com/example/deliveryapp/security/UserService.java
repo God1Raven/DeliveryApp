@@ -21,7 +21,6 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-
     /**
      * Создание пользователя
      *
@@ -72,7 +71,6 @@ public class UserService implements UserDetailsService {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return getByUsername(username);
     }
-
 
     /**
      * Выдача прав администратора текущему пользователю

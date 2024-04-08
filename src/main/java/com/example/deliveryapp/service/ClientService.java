@@ -1,18 +1,12 @@
 package com.example.deliveryapp.service;
 
 import com.example.deliveryapp.dto.ClientDto;
-import com.example.deliveryapp.entity.Client;
 import com.example.deliveryapp.mapper.ClientMapper;
 import com.example.deliveryapp.repository.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ClientService implements BaseService<ClientDto> {
@@ -24,8 +18,6 @@ public class ClientService implements BaseService<ClientDto> {
         this.clientRepository = clientRepository;
         this.clientMapper = clientMapper;
     }
-
-
 
     public ClientDto create(ClientDto clientDto) {
         return clientMapper.mapEntityToDto(clientRepository.save(clientMapper.mapDtoToEntity(clientDto)));

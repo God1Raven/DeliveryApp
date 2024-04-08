@@ -10,12 +10,11 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Entity
@@ -24,17 +23,13 @@ import java.util.List;
 @AllArgsConstructor
 public class Product {
     @Id
-    @SequenceGenerator(
-            name = "product_product_id_seq",
-            schema = "public",
-            sequenceName = "product_product_id_seq",
-            allocationSize = 1)
+    @SequenceGenerator(name = "product_product_id_seq", schema = "public", sequenceName = "product_product_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_product_id_seq")
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "parameter",columnDefinition = "jsonb")
+    @Column(name = "parameter", columnDefinition = "jsonb")
     private String parameters;
 
     @ManyToMany

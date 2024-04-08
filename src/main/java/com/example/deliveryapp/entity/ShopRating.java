@@ -19,13 +19,9 @@ import lombok.NoArgsConstructor;
 
 public class ShopRating {
     @Id
-    @SequenceGenerator(
-            name = "shop_rating_shop_rating_id_seq",
-            schema = "public",
-            sequenceName = "shop_rating_shop_rating_id_seq",
-            allocationSize = 1)
+    @SequenceGenerator(name = "shop_rating_shop_rating_id_seq", schema = "public", sequenceName = "shop_rating_shop_rating_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shop_rating_shop_rating_id_seq")
-    @Column(name  = "id")
+    @Column(name = "id")
     private Long id;
     @Column(name = "shop_id")
     private Long shopId;

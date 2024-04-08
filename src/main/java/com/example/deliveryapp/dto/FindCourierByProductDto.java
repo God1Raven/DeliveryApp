@@ -1,6 +1,5 @@
 package com.example.deliveryapp.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

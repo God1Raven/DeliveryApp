@@ -8,5 +8,6 @@ import org.mapstruct.Mapper;
 
 public interface ShopMapper {
     Shop mapDtoToEntity(ShopDto shopDto);
-    ShopDto mapEntityToDto (Shop shop);
+
+    ShopDto mapEntityToDto(Shop shop);
 }

@@ -12,21 +12,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 @Mapper(componentModel = "spring")
 public interface SaleMapper {
 
     Sale mapDtoToEntity(SaleDto saleDto);
 
-    @Mappings(value = {
-            @Mapping(source = "courier", target = "courierId"),
-            @Mapping(source = "client", target = "clientId"),
-            @Mapping(source = "shop", target = "shopId"),
-            @Mapping(source = "products", target = "productIds")
-    })
+    @Mappings(value = {@Mapping(source = "courier", target = "courierId"),
+            @Mapping(source = "client", target = "clientId"), @Mapping(source = "shop", target = "shopId"),
+            @Mapping(source = "products", target = "productIds")})
     SaleDto mapEntityToDto(Sale sale);
 
     default Long mapToId(Courier courier) {
@@ -45,5 +38,6 @@ public interface SaleMapper {
         return product != null ? product.getId() : null;
     }
 
-    FindSaleByAddressByAvgRatingDto mapCustomEntityToCustomDto(FindSaleByAddressByAvgRating findSaleByAddressByAvgRating);
+    FindSaleByAddressByAvgRatingDto mapCustomEntityToCustomDto(
+            FindSaleByAddressByAvgRating findSaleByAddressByAvgRating);
 }

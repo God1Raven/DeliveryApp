@@ -4,12 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.List;
 
 @Data
 @Entity
@@ -21,16 +15,13 @@ public class Client {
     public Long getId() {
         return id;
     }
-    public Client(Long id){
+
+    public Client(Long id) {
         this.id = id;
     }
 
     @Id
-    @SequenceGenerator(
-            name = "client_client_id_seq",
-            schema = "public",
-            sequenceName = "client_client_id_seq",
-            allocationSize = 1)
+    @SequenceGenerator(name = "client_client_id_seq", schema = "public", sequenceName = "client_client_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_client_id_seq")
     @Column(name = "id")
     private Long id;

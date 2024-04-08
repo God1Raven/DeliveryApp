@@ -5,7 +5,6 @@ import com.example.deliveryapp.dto.FindCourierByProductDto;
 import com.example.deliveryapp.entity.Courier;
 import com.example.deliveryapp.entity.FindCourierByProduct;
 import org.mapstruct.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper(componentModel = "spring")
 public interface CourierMapper {

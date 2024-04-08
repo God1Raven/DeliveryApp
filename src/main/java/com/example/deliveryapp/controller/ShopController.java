@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/shop")
 @SecurityRequirement(name = "bearerAuth")
 @PreAuthorize("hasRole('CLIENT')")
-public class ShopController extends CrudController<ShopDto, ShopService>{
+public class ShopController extends CrudController<ShopDto, ShopService> {
     @Autowired
     public ShopController(ShopService shopService) {
         this.baseService = shopService;

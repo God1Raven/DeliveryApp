@@ -1,6 +1,8 @@
 package com.example.deliveryapp.security;
 
 import jakarta.persistence.*;
+import java.util.Collection;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +10,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
 @Entity
 @Data
 @AllArgsConstructor
@@ -18,7 +18,7 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "users_users_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_users_id_seq")
     @SequenceGenerator(name = "users_users_id_seq", sequenceName = "users_users_id_seq", allocationSize = 1)
     private Long id;
     @Column(name = "username", unique = true, nullable = false)
@@ -30,6 +30,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));

@@ -1,18 +1,16 @@
 package com.example.deliveryapp.service;
 
-import com.example.deliveryapp.dto.AdminDto;
 import com.example.deliveryapp.dto.ShopDto;
 import com.example.deliveryapp.mapper.ShopMapper;
 import com.example.deliveryapp.repository.ShopRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 
-public class ShopService implements BaseService<ShopDto>{
+public class ShopService implements BaseService<ShopDto> {
     private final ShopRepository shopRepository;
     private final ShopMapper shopMapper;
 
@@ -37,6 +35,7 @@ public class ShopService implements BaseService<ShopDto>{
     public void delete(Long id) {
         shopRepository.deleteById(id);
     }
+
     @Override
     public List<ShopDto> getAll() {
         return shopRepository.findAll().stream().map(shopMapper::mapEntityToDto).collect(Collectors.toList());

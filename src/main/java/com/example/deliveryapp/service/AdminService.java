@@ -3,19 +3,17 @@ package com.example.deliveryapp.service;
 import com.example.deliveryapp.dto.AdminDto;
 import com.example.deliveryapp.mapper.AdminMapper;
 import com.example.deliveryapp.repository.AdminRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
-public class AdminService implements BaseService<AdminDto>{
+public class AdminService implements BaseService<AdminDto> {
 
     private final AdminRepository adminRepository;
     private final AdminMapper adminMapper;
-
 
     public AdminDto create(AdminDto adminDto) {
         return adminMapper.mapEntityToDto(adminRepository.save(adminMapper.mapDtoToEntity(adminDto)));

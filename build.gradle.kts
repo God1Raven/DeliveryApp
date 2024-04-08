@@ -3,7 +3,7 @@ plugins {
 	id("org.springframework.boot") version "3.2.2"
 	id("io.spring.dependency-management") version "1.1.4"
 	id("io.swagger.core.v3.swagger-gradle-plugin") version "2.2.20"
-	id ("checkstyle")
+	id("com.diffplug.spotless") version "6.25.0"
 }
 
 group = "com.example"
@@ -65,6 +65,17 @@ dependencies {
 
 	testImplementation("org.springframework.security:spring-security-test")
 
+}
+
+spotless {
+	java {
+		importOrder()
+		removeUnusedImports()
+		eclipse()
+
+		indentWithSpaces()
+		endWithNewline()
+	}
 }
 
 tasks.withType<Test> {
