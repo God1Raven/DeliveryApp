@@ -46,5 +46,4 @@ public class ProductControllerIT extends DatabaseTest {
 
         mockMvc.perform(requestBuilder).andExpectAll(status().isOk(), content().json(response));
     }
-
 }
