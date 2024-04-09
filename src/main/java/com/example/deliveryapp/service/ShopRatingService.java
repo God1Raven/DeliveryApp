@@ -4,7 +4,6 @@ import com.example.deliveryapp.dto.ShopRatingDto;
 import com.example.deliveryapp.mapper.ShopRatingMapper;
 import com.example.deliveryapp.repository.ShopRatingRepository;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
