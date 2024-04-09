@@ -12,5 +12,4 @@ import org.springframework.security.test.context.support.WithMockUser;
 @ExpectedDataSet(value = {"data_sets/DATA_SET.json"})
 @WithMockUser(username = "admin", roles = {"CLIENT", "ADMIN"})
 public class AdminControllerIT {
-
 }

@@ -17,9 +17,9 @@ public class DatabaseTest extends BaseTest {
 
     @DynamicPropertySource
     public static void changeConfiguration(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", () -> postgreSQLContainer.getJdbcUrl() + "&stringtype=unspecified");
-        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
-        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
+        registry.add("spring.datasourceutils.url", () -> postgreSQLContainer.getJdbcUrl() + "&stringtype=unspecified");
+        registry.add("spring.datasourceutils.username", postgreSQLContainer::getUsername);
+        registry.add("spring.datasourceutils.password", postgreSQLContainer::getPassword);
     }
 
 }

@@ -43,8 +43,5 @@ public class SaleControllerIT extends DatabaseTest {
 
         mockMvc.perform(requestBuilder).andExpectAll(status().isOk(), content().json(response));
         // TODO сделать метод, в который сразу подаешь респонс и реквест, что бы
-        // уменьшить код
-        // Assertions.assertNotNull(client, "{\"id\": \"52\", \"address\": \"Kiseleva\",
-        // \"d.25\", \"kv.48\", \"shopId\": \"240\", \"shopName\": \"Магазин_42\"}");
     }
 }

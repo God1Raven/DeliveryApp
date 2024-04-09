@@ -34,6 +34,7 @@ public class ProductServiceTest extends DatabaseTest {
     public ProductServiceTest(ProductMapper productMapper) {
         productDto = productMapper.mapEntityToDto(productEntity);
     }
+
     @Test
     void createProductTest() {
         Mockito.doReturn(productEntity).when(productRepository).save(any(Product.class));
