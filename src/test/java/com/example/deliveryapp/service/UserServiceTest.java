@@ -40,6 +40,6 @@ public class UserServiceTest extends BaseTest {
     @WithMockUser(roles = "CLIENT")
     @Disabled
     public void securedEndpointTest() throws Exception {
-        mockMvc.perform(get("/**")).andExpect(status().isOk());
+        mockMvc.perform(get("/localhost:8081/auth/sign-in")).andExpect(status().isOk());
     }
 }

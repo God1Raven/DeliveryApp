@@ -4,7 +4,6 @@ import static com.example.deliveryapp.BaseTest.getContentFromFile;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.example.deliveryapp.BaseTest;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -23,10 +22,9 @@ public class JwtServiceTest extends BaseTest {
 
     @Test
     @WithMockUser(roles = "CLIENT")
-    @Disabled
     public void createAdminTest() throws Exception {
-        var request = post("/?").contentType(MediaType.APPLICATION_JSON)
-                .content(getContentFromFile("Request/admin/create-admin.json"));
+        var request = post("/admin").contentType(MediaType.APPLICATION_JSON)
+                .content(getContentFromFile("/Request/admin/create-admin.json"));
         mockMvc.perform(request).andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
 
     }
