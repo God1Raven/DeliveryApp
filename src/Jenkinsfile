@@ -7,7 +7,7 @@ node {
 
     stage (Build){
         with gradle {
-            sh './gradle build --stacktrace -i'
+            sh './gradlew build --stacktrace -i'
         }
     }
 }
