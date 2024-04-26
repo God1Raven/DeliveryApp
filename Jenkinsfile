@@ -6,6 +6,6 @@ node {
     }
 
     stage('Build'){
-        sh './gradlew build --stacktrace -i'
+        sh './gradlew clean build --stacktrace -i'
     }
 }
