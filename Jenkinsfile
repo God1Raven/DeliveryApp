@@ -5,7 +5,7 @@ node {
         }
     }
 
-    stage (Build){
+    stage('Build'){
         with gradle {
             sh './gradlew build --stacktrace -i'
         }
